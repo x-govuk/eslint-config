@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "eslint . --config index.js",
-    "release": "np"
+    "release": "np --no-publish"
   },
   "publishConfig": {
     "access": "public"
