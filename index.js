@@ -1,8 +1,8 @@
 import js from "@eslint/js";
+import markdown from "@eslint/markdown";
 import prettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
-import markdown from "eslint-plugin-markdown";
 import globals from "globals";
 import neostandard, { plugins } from "neostandard";
 
