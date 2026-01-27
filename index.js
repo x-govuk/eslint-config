@@ -42,7 +42,6 @@ export default [
       "**/*.{cjs,js,mjs}",
 
       // Check markdown `*.md` contains valid code blocks
-      // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
       "**/*.md/*.{cjs,js,mjs}",
     ],
     languageOptions: {
@@ -111,6 +110,18 @@ export default [
 
       // Avoid hard to read multi assign statements
       "no-multi-assign": "error",
+    },
+  },
+  {
+    files: ["**/*.md"],
+    rules: {
+      // Ignore GitHub alert labels
+      "markdown/no-missing-label-refs": [
+        "error",
+        {
+          allowLabels: ["!NOTE", "!TIP", "!IMPORTANT", "!WARNING", "!CAUTION"],
+        },
+      ],
     },
   },
 ];
