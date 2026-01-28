@@ -21,6 +21,9 @@
     "release": "np --no-publish",
     "test": "eslint --color --config index.js --max-warnings 0 ."
   },
+  "workspaces": [
+    "."
+  ],
   "dependencies": {
     "@eslint/js": "^9.14.0",
     "@eslint/markdown": "^7.5.1",
