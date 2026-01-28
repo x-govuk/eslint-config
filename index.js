@@ -1,48 +1,23 @@
-import js from "@eslint/js";
-import markdown from "@eslint/markdown";
-import prettier from "eslint-config-prettier";
-import importPlugin from "eslint-plugin-import";
-import jsdoc from "eslint-plugin-jsdoc";
+import eslint from "@eslint/js";
+import pluginMarkdown from "@eslint/markdown";
+import { defineConfig, globalIgnores } from "eslint/config";
+import configPrettier from "eslint-config-prettier/flat";
+import pluginImport from "eslint-plugin-import";
+import pluginJsdoc from "eslint-plugin-jsdoc";
+import pluginNode from "eslint-plugin-n";
+import pluginPromise from "eslint-plugin-promise";
 import globals from "globals";
-import neostandard, { plugins } from "neostandard";
 
-export default [
+export default defineConfig([
   {
-    plugins: {
-      import: importPlugin,
-      jsdoc,
-      markdown,
-    },
-  },
-  ...neostandard({ noStyle: true }),
-  prettier,
-  ...markdown.configs.recommended,
-  {
-    ignores: [
-      "**/.cache/**",
-      "**/dist/**",
-      "**/vendor/**",
-
-      // Lint dot files
-      "!.*",
-      "node_modules",
-      "node_modules/.*",
-
-      // Prevent CHANGELOG history changes
-      "CHANGELOG.md",
-    ],
-  },
-  {
-    ...js.configs.recommended,
-    ...importPlugin.flatConfigs.recommended,
-    ...jsdoc.configs["flat/recommended"],
-    ...plugins.n.configs["flat/recommended"],
-    ...plugins.promise.configs["flat/recommended"],
-    files: [
-      "**/*.{cjs,js,mjs}",
-
-      // Check markdown `*.md` contains valid code blocks
-      "**/*.md/*.{cjs,js,mjs}",
+    files: ["**/*.{cjs,js,mjs}"],
+    extends: [
+      eslint.configs.recommended,
+      pluginImport.flatConfigs.recommended,
+      pluginJsdoc.configs["flat/recommended"],
+      pluginNode.configs["flat/recommended"],
+      pluginPromise.configs["flat/recommended"],
+      configPrettier,
     ],
     languageOptions: {
       globals: {
@@ -114,6 +89,8 @@ export default [
   },
   {
     files: ["**/*.md"],
+    extends: [pluginMarkdown.configs.recommended],
+    language: "markdown/gfm",
     rules: {
       // Ignore GitHub alert labels
       "markdown/no-missing-label-refs": [
@@ -124,4 +101,17 @@ export default [
       ],
     },
   },
-];
+  globalIgnores([
+    "**/.cache/**",
+    "**/dist/**",
+    "**/vendor/**",
+
+    // Lint dot files
+    "!.*",
+    "node_modules",
+    "node_modules/.*",
+
+    // Prevent CHANGELOG history changes
+    "CHANGELOG.md",
+  ]),
+]);
