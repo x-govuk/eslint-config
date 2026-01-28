@@ -2,7 +2,7 @@ import eslint from "@eslint/js";
 import pluginMarkdown from "@eslint/markdown";
 import { defineConfig, globalIgnores } from "eslint/config";
 import configPrettier from "eslint-config-prettier/flat";
-import pluginImport from "eslint-plugin-import";
+import { importX as pluginImportX } from "eslint-plugin-import-x";
 import pluginJsdoc from "eslint-plugin-jsdoc";
 import pluginNode from "eslint-plugin-n";
 import pluginPromise from "eslint-plugin-promise";
@@ -13,7 +13,7 @@ export default defineConfig([
     files: ["**/*.{cjs,js,mjs}"],
     extends: [
       eslint.configs.recommended,
-      pluginImport.flatConfigs.recommended,
+      pluginImportX.flatConfigs.recommended,
       pluginJsdoc.configs["flat/recommended"],
       pluginNode.configs["flat/recommended"],
       pluginPromise.configs["flat/recommended"],
@@ -27,9 +27,12 @@ export default defineConfig([
         ecmaVersion: "latest",
       },
     },
+    plugins: {
+      "import-x": pluginImportX,
+    },
     rules: {
       // Check import or require statements are A-Z ordered
-      "import/order": [
+      "import-x/order": [
         "error",
         {
           alphabetize: { order: "asc" },
