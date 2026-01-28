@@ -17,7 +17,7 @@
     "url": "https://github.com/x-govuk/eslint-config.git"
   },
   "scripts": {
-    "test": "eslint . --config index.js",
+    "test": "eslint --color --config index.js --max-warnings 0 .",
     "release": "np --no-publish"
   },
   "publishConfig": {
