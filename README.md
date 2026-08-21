@@ -6,7 +6,7 @@ It is loosely based on [the configuration proposed for use by GOV.UK Frontend](h
 
 ## Requirements
 
-Node.js v20 or later.
+Node.js v22.22.0 or later.
 
 ## Installation
 
