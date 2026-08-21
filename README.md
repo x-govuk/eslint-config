@@ -35,9 +35,9 @@ Bug reports and feature requests are welcome. Please raise an issue or submit a 
 
 ## Releasing a new version
 
-`npm run release`
+Update the `version` field in `package.json` and merge this change to `main`.
 
-This command will ask you what version you want to use. It will then publish a new version on NPM, create and push a new git tag and then generate release notes ready for posting on GitHub.
+Then, create a [new release](https://github.com/x-govuk/eslint-config/releases/new) using the GitHub web interface, using a tag in the form `vX.Y.Z` matching the new version (for example `v1.2.3`) and targeting `main`. Publishing the release pushes the tag, which triggers the [publish workflow](.github/workflows/publish.yml) to publish the new version to NPM.
 
 > [!NOTE]
 > Releasing a new version requires permission to publish packages to the `@x-govuk` organisation.
