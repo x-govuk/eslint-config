@@ -3,7 +3,7 @@ import pluginMarkdown from "@eslint/markdown";
 import { defineConfig, globalIgnores } from "eslint/config";
 import configPrettier from "eslint-config-prettier/flat";
 import { importX as pluginImportX } from "eslint-plugin-import-x";
-import pluginJsdoc from "eslint-plugin-jsdoc";
+import { configs as jsdocConfigs } from "eslint-plugin-jsdoc";
 import pluginNode from "eslint-plugin-n";
 import pluginPromise from "eslint-plugin-promise";
 import globals from "globals";
@@ -14,7 +14,7 @@ export default defineConfig([
     extends: [
       eslint.configs.recommended,
       pluginImportX.flatConfigs.recommended,
-      pluginJsdoc.configs["flat/recommended"],
+      jsdocConfigs["flat/recommended"],
       pluginNode.configs["flat/recommended"],
       pluginPromise.configs["flat/recommended"],
       configPrettier,
