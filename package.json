@@ -18,7 +18,6 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "release": "np --no-publish",
     "test": "eslint --color --config index.js --max-warnings 0 ."
   },
   "workspaces": [
@@ -35,9 +34,6 @@
     "eslint-plugin-n": "^17.11.0",
     "eslint-plugin-promise": "^7.1.0",
     "globals": "^17.2.0"
-  },
-  "devDependencies": {
-    "np": "^12.0.1"
   },
   "engines": {
     "node": "^22.22.0 || >=24"
